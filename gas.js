@@ -70,7 +70,7 @@ gdriveのファイルからjsonを読み込む関数。予めファイルへのu
 function readJSON() {
   var file = DriveApp.getFileById('XXX');//ファイルへのリンク
   var data = file.getBlob().getDataAsString();
-  if data=="" data="{}" //ファイルが空だった場合、jsonに置き換える
+  if (data=="") data="{}" //ファイルが空だった場合、jsonに置き換える
   var ret=JSON.parse(data);
   return ret;
 
@@ -110,7 +110,7 @@ function doPost(){
     }
     if(result=="AC" && checked_submits[user].indexOf(hash(JSON.stringify(json[j])))==-1){　//結果がACかつ今までに取得していない提出なら
       checked_submits[user].push(hash(JSON.stringify(json[j])));
-      if (newtargets.indexOf(user)==-1)text+=user+"が"+problem+"を通しました！\n";　//newtargetsでないならtextに追記
+      if (newtargets.indexOf(user)==-1)text+=user+"が"+problem+"をACしました！\n";　//newtargetsでないならtextに追記
       }
   }
   if (text!=""){//本文が空でない（誰かが新しくACした or userの追加があった）なら
